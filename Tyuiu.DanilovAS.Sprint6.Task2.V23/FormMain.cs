@@ -30,26 +30,24 @@ namespace Tyuiu.DanilovAS.Sprint6.Task2.V23
         {
             try
             {
-                int startStep = Convert.ToInt32(textBoxStartValue_DAS.Text);
-                int stopStep = Convert.ToInt32(textBoxStopValue_DAS.Text);
+                int startStep = Convert.ToInt32(textBoxStartValue_DAS);
+                int stopStep = Convert.ToInt32(textBoxStopValue_DAS);
 
-                int len = ds.GetMassFunction(startStep, stopStep).Length;
+                int len = ds.GetMassFunction(startStep, stopStep).Length ;
 
                 double[] valueArray;
                 valueArray = new double[len];
 
                 valueArray = ds.GetMassFunction(startStep, stopStep);
-
-                this.chartResult_DAS.Titles.Add("График функции F(x)");
-
-                this.chartResult_DAS.ChartAreas[0].AxisX.Title = "Ось X:";
-                this.chartResult_DAS.ChartAreas[0].AxisY.Title = "Ось Y:";
-
-                for (int i = 0; i<=len - 1; i++)
+                this.chartResult_DAS.Titles.Add("График функции");
+                this.chartResult_DAS.ChartAreas[0].AxisX.Title = "Ось X";
+                this.chartResult_DAS.ChartAreas[0].AxisY.Title = "Ось Y";
+                for (int i = 0; i <= len - 1; i++)
                 {
                     this.dataGridViewFunction_DAS.Rows.Add(Convert.ToString(startStep), Convert.ToString(valueArray[i]));
 
                     this.chartResult_DAS.Series[0].Points.AddXY(startStep, valueArray[i]);
+
                     startStep++;
                 }
             }
